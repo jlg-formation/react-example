@@ -1,8 +1,13 @@
+import { Route, Routes } from "react-router-dom";
+import AppHome from "../routes/AppHome";
+import AppLegal from "../routes/AppLegal";
+
 function AppBody() {
   return (
-    <>
-      <div>To be replaced by routing</div>
-    </>
+    <Routes>
+      <Route path="/" element={<AppHome />}></Route>
+      <Route path="/legal" element={<AppLegal />}></Route>
+    </Routes>
   );
 }
 

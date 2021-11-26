@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { themeService } from "../services/theme.service";
 
 function AppHeader() {
@@ -7,10 +8,10 @@ function AppHeader() {
   }
   return (
     <header>
-      <a href="/">
+      <Link to="/">
         <span className="icon-logo"></span>
         <span>Gestion Stock</span>
-      </a>
+      </Link>
       <button onClick={toggleTheme}>Dark/Light</button>
     </header>
   );
