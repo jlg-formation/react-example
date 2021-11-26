@@ -1,7 +1,7 @@
-@import-normalize;
+@import "normalize.css";
+@import "sanitize.css";
 
 @import "./assets/custom-font/css/fontello.css";
 
-header {
-  background-color: #eee;
-}
+@import "./theme.scss";
+@import "./scss/layout.scss";

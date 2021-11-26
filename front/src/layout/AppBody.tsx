@@ -1,7 +1,7 @@
 function AppBody() {
   return (
     <>
-      <div>To be replace by routing</div>
+      <div>To be replaced by routing</div>
     </>
   );
 }

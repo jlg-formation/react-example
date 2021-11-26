@@ -1,0 +1,17 @@
+:root {
+  --primary-hue: 240;
+
+  --bg-color: white;
+  --fg-color: black;
+
+  --primary-bg-color: hsl(var(--primary-hue), 100%, 90%);
+  --footer-bg-color: hsl(var(--primary-hue), 0%, 90%);
+}
+
+.dark {
+  --bg-color: black;
+  --fg-color: white;
+
+  --primary-bg-color: hsl(var(--primary-hue), 100%, 10%);
+  --footer-bg-color: hsl(var(--primary-hue), 0%, 10%);
+}
