@@ -1,0 +1,30 @@
+.content {
+  nav {
+    display: flex;
+    gap: 0.3em;
+    margin-bottom: 1em;
+  }
+
+  table {
+    border: 0.1em solid var(--border-color);
+    border-collapse: collapse;
+    th,
+    td {
+      padding: 0.5em 1em;
+    }
+    thead {
+      background-color: var(--border-color);
+    }
+
+    tbody {
+      cursor: pointer;
+      tr:nth-child(even) {
+        background-color: var(--cell-even-bg-color);
+      }
+
+      tr:hover {
+        background-color: var(--cell-hover-bg-collor);
+      }
+    }
+  }
+}

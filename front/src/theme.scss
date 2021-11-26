@@ -17,6 +17,10 @@
   --primary-hover-button-bg-color: hsl(var(--primary-hue), 100%, 40%);
   --primary-active-button-bg-color: hsl(var(--primary-hue), 100%, 60%);
   --primary-button-fg-color: white;
+
+  --border-color: #bbb;
+  --cell-even-bg-color: #eee;
+  --cell-hover-bg-collor: #ddd;
 }
 
 .dark {
@@ -36,4 +40,8 @@
   --primary-hover-button-bg-color: hsl(var(--primary-hue), 100%, 40%);
   --primary-active-button-bg-color: hsl(var(--primary-hue), 100%, 50%);
   --primary-button-fg-color: white;
+
+  --border-color: #555;
+  --cell-even-bg-color: #222;
+  --cell-hover-bg-collor: #333;
 }
