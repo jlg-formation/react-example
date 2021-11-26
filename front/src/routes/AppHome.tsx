@@ -7,6 +7,12 @@ function AppHome() {
       <Link to="/stock">
         <button>Voir le stock</button>
       </Link>
+      <Link to="/stock">
+        <button disabled>Voir le stock</button>
+      </Link>
+      <Link to="/stock">
+        <button className="primary">Voir le stock</button>
+      </Link>
     </main>
   );
 }

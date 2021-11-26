@@ -6,6 +6,17 @@
 
   --primary-bg-color: hsl(var(--primary-hue), 100%, 90%);
   --footer-bg-color: hsl(var(--primary-hue), 0%, 90%);
+
+  --button-bg-color: #eee;
+  --disabled-fg-color: #aaa;
+
+  --hover-button-bg-color: #ddd;
+  --active-button-bg-color: #ccc;
+
+  --primary-button-bg-color: hsl(var(--primary-hue), 100%, 30%);
+  --primary-hover-button-bg-color: hsl(var(--primary-hue), 100%, 40%);
+  --primary-active-button-bg-color: hsl(var(--primary-hue), 100%, 60%);
+  --primary-button-fg-color: white;
 }
 
 .dark {
@@ -14,4 +25,15 @@
 
   --primary-bg-color: hsl(var(--primary-hue), 100%, 10%);
   --footer-bg-color: hsl(var(--primary-hue), 0%, 10%);
+
+  --button-bg-color: #333;
+  --disabled-fg-color: #777;
+
+  --hover-button-bg-color: #555;
+  --active-button-bg-color: #666;
+
+  --primary-button-bg-color: hsl(var(--primary-hue), 100%, 30%);
+  --primary-hover-button-bg-color: hsl(var(--primary-hue), 100%, 40%);
+  --primary-active-button-bg-color: hsl(var(--primary-hue), 100%, 50%);
+  --primary-button-fg-color: white;
 }
