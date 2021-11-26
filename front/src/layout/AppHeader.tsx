@@ -1,5 +1,3 @@
-import logo from "../assets/logo.svg";
-
 function AppHeader() {
   return (
     <header>
