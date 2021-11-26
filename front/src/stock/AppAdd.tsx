@@ -15,7 +15,7 @@ function AppAdd() {
           <div>Quantité</div>
           <input type="text" />
         </label>
-        <button>Ajouter</button>
+        <button className="primary">Ajouter</button>
       </form>
     </main>
   );
