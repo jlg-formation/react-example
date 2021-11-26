@@ -1,8 +1,12 @@
+import { Link } from "react-router-dom";
+
 function AppHome() {
   return (
     <main className="home">
       <h1>Gérer efficacement votre stock</h1>
-      <button>Voir le stock</button>
+      <Link to="/stock">
+        <button>Voir le stock</button>
+      </Link>
     </main>
   );
 }
