@@ -4,7 +4,7 @@ function AppHeader() {
   return (
     <header>
       <a href="/">
-        <img src={logo} alt="Logo Gestion Stock" />
+        <span className="icon-logo"></span>
         <span>Gestion Stock</span>
       </a>
     </header>
