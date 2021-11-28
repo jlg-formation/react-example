@@ -1,8 +1,10 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 function AppStock() {
+  const [loading, setLoading] = useState(true);
   return (
-    <main className="home">
+    <main>
       <h1>Liste des articles</h1>
       <div className="content">
         <nav>
@@ -18,37 +20,41 @@ function AppStock() {
             <span className="icon-trash"></span>
           </button>
         </nav>
-        <table>
-          <thead>
-            <tr>
-              <th className="name">Nom</th>
-              <th className="price">Prix</th>
-              <th className="qty">Quantité</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td className="name">Tournevis</td>
-              <td className="price">1.23 €</td>
-              <td className="qty">345</td>
-            </tr>
-            <tr>
-              <td className="name">Tournevis</td>
-              <td className="price">1.23 €</td>
-              <td className="qty">345</td>
-            </tr>
-            <tr>
-              <td className="name">Tournevis</td>
-              <td className="price">1.23 €</td>
-              <td className="qty">345</td>
-            </tr>
-            <tr>
-              <td className="name">Tournevis</td>
-              <td className="price">1.23 €</td>
-              <td className="qty">345</td>
-            </tr>
-          </tbody>
-        </table>
+        {loading ? (
+          <span>Loading...</span>
+        ) : (
+          <table>
+            <thead>
+              <tr>
+                <th className="name">Nom</th>
+                <th className="price">Prix</th>
+                <th className="qty">Quantité</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td className="name">Tournevis</td>
+                <td className="price">1.23 €</td>
+                <td className="qty">345</td>
+              </tr>
+              <tr>
+                <td className="name">Tournevis</td>
+                <td className="price">1.23 €</td>
+                <td className="qty">345</td>
+              </tr>
+              <tr>
+                <td className="name">Tournevis</td>
+                <td className="price">1.23 €</td>
+                <td className="qty">345</td>
+              </tr>
+              <tr>
+                <td className="name">Tournevis</td>
+                <td className="price">1.23 €</td>
+                <td className="qty">345</td>
+              </tr>
+            </tbody>
+          </table>
+        )}
       </div>
     </main>
   );

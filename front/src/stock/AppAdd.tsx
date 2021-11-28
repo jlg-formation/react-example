@@ -1,6 +1,6 @@
 function AppAdd() {
   return (
-    <main className="home">
+    <main>
       <h1>Ajouter un article</h1>
       <form>
         <label>
