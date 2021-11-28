@@ -1,8 +1,25 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { lastValueFrom } from "rxjs";
+import { Article } from "../interfaces/Article";
+import { articleService } from "../services/article.service";
 
 function AppStock() {
-  const [loading, setLoading] = useState(true);
+  const [articles, setArticles] = useState<Article[] | undefined>(undefined);
+  const [error, setError] = useState<string>("");
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const articles = await lastValueFrom(articleService.get());
+        setArticles(articles);
+      } catch (err) {
+        console.log("err: ", err);
+        setError("Cannot load the articles");
+      }
+    })();
+  }, []);
+
   return (
     <main>
       <h1>Liste des articles</h1>
@@ -20,8 +37,12 @@ function AppStock() {
             <span className="icon-trash"></span>
           </button>
         </nav>
-        {loading ? (
-          <span>Loading...</span>
+        {articles === undefined ? (
+          error !== "" ? (
+            error
+          ) : (
+            <span>Loading...</span>
+          )
         ) : (
           <table>
             <thead>
@@ -32,26 +53,13 @@ function AppStock() {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td className="name">Tournevis</td>
-                <td className="price">1.23 €</td>
-                <td className="qty">345</td>
-              </tr>
-              <tr>
-                <td className="name">Tournevis</td>
-                <td className="price">1.23 €</td>
-                <td className="qty">345</td>
-              </tr>
-              <tr>
-                <td className="name">Tournevis</td>
-                <td className="price">1.23 €</td>
-                <td className="qty">345</td>
-              </tr>
-              <tr>
-                <td className="name">Tournevis</td>
-                <td className="price">1.23 €</td>
-                <td className="qty">345</td>
-              </tr>
+              {articles.map((a) => (
+                <tr key={a.id}>
+                  <td className="name">{a.name}</td>
+                  <td className="price">{a.price} €</td>
+                  <td className="qty">{a.qty}</td>
+                </tr>
+              ))}
             </tbody>
           </table>
         )}
