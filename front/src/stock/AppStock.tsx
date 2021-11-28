@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useCallback, useContext, useEffect, useState } from "react";
 import NumberFormat from "react-number-format";
 import { Link } from "react-router-dom";
 import { lastValueFrom } from "rxjs";
@@ -31,7 +31,7 @@ function AppStock() {
     })();
   };
 
-  const refresh = async () => {
+  const refresh = useCallback(async () => {
     try {
       setIsRefreshing(true);
       const articles = await lastValueFrom(articleService.get());
@@ -42,11 +42,11 @@ function AppStock() {
     } finally {
       setIsRefreshing(false);
     }
-  };
+  }, [articleService]);
 
   useEffect(() => {
     refresh();
-  }, []);
+  }, [refresh]);
 
   return (
     <main>
