@@ -26,7 +26,6 @@ class ArticleService {
   }
 
   remove(ids: string[]) {
-    console.log("ids: ", ids);
     return fromFetch(url, {
       method: "DELETE",
       body: JSON.stringify(ids),

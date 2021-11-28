@@ -25,7 +25,6 @@ function AppAdd() {
     event: FormEvent<HTMLFormElement>
   ) => {
     event.preventDefault();
-    console.log("A name was submitted: ", article);
     (async () => {
       setIsAdding(true);
       await lastValueFrom(articleService.add(article));

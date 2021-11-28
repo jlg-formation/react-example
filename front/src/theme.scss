@@ -22,6 +22,9 @@
   --cell-even-bg-color: #eee;
   --cell-hover-bg-color: #ddd;
   --cell-selected-bg-color: #ccc;
+
+  --skeleton-start-color: #eee;
+  --skeleton-end-color: #ddd;
 }
 
 .dark {
@@ -46,4 +49,7 @@
   --cell-even-bg-color: #222;
   --cell-hover-bg-color: #333;
   --cell-selected-bg-color: #444;
+
+  --skeleton-start-color: #333;
+  --skeleton-end-color: #444;
 }

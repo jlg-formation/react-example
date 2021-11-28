@@ -3,12 +3,14 @@ import { Link } from "react-router-dom";
 import { lastValueFrom } from "rxjs";
 import { Article } from "../interfaces/Article";
 import { articleService } from "../services/article.service";
+import AppArticleLoadingSkeleton from "../widgets/AppArticleLoadingSkeleton";
 
 function AppStock() {
   const [articles, setArticles] = useState<Article[] | undefined>(undefined);
   const [error, setError] = useState<string>("");
   const [selectedArticles, setSelectedArticles] = useState(new Set<Article>());
   const [isRemoving, setIsRemoving] = useState(false);
+  const [isRefreshing, setIsRefreshing] = useState(false);
 
   const toggle = (a: Article) => () => {
     selectedArticles.has(a)
@@ -29,11 +31,14 @@ function AppStock() {
 
   const refresh = async () => {
     try {
+      setIsRefreshing(true);
       const articles = await lastValueFrom(articleService.get());
       setArticles(articles);
     } catch (err) {
-      console.log("err: ", err);
+      console.error("err: ", err);
       setError("Cannot load the articles");
+    } finally {
+      setIsRefreshing(false);
     }
   };
 
@@ -46,8 +51,12 @@ function AppStock() {
       <h1>Liste des articles</h1>
       <div className="content">
         <nav>
-          <button>
-            <span className="icon-arrows-cw"></span>
+          <button onClick={refresh}>
+            <span
+              className={
+                isRefreshing ? "icon-spin5 animate-spin" : "icon-arrows-cw"
+              }
+            ></span>
           </button>
           <Link to="/stock/add">
             <button>
@@ -68,7 +77,7 @@ function AppStock() {
           error !== "" ? (
             error
           ) : (
-            <span>Loading...</span>
+            <AppArticleLoadingSkeleton />
           )
         ) : (
           <table>
