@@ -1,0 +1,40 @@
+.toggle {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.3em;
+
+  input {
+    display: none;
+  }
+
+  input + .switch {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    height: 1.5em;
+    width: 3em;
+    border-radius: 1em;
+    background-color: var(--button-bg-color);
+    .ergo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 1em;
+      height: 1em;
+      margin: 0 0.2em;
+      border-radius: 1em;
+      background-color: var(--hover-button-bg-color);
+      span {
+        font-size: 0.8em;
+      }
+    }
+  }
+
+  input:checked + .switch {
+    justify-content: end;
+    .ergo {
+      background-color: var(--active-button-bg-color);
+    }
+  }
+}

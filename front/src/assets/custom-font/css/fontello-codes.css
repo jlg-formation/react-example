@@ -2,4 +2,6 @@
 .icon-logo:before { content: '\e800'; } /* '' */
 .icon-plus:before { content: '\e801'; } /* '' */
 .icon-arrows-cw:before { content: '\e802'; } /* '' */
+.icon-sun:before { content: '\f185'; } /* '' */
+.icon-moon:before { content: '\f186'; } /* '' */
 .icon-trash:before { content: '\f1f8'; } /* '' */
