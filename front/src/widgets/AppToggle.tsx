@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 function AppToggle({
   action,
   initialState = true,
@@ -9,20 +7,21 @@ function AppToggle({
   initialState: boolean;
   label: { on: JSX.Element; off: JSX.Element };
 }): JSX.Element {
-  console.log("app toggle start");
-  const [state, setState] = useState(initialState);
-  console.log("state: ", state);
+  console.log("start AppToggle");
+  console.log("initialState: ", initialState);
   const handleClick = () => {
-    console.log("handle click");
-    const newState = !state;
-    setState(newState);
-    action(newState);
+    action(!initialState);
   };
   return (
     <label className="toggle">
-      <input type="checkbox" role="switch" onClick={handleClick} />
+      <input
+        type="checkbox"
+        role="switch"
+        checked={initialState}
+        onChange={handleClick}
+      />
       <div className="switch">
-        <div className="ergo">{state ? label.on : label.off}</div>
+        <div className="ergo">{initialState ? label.on : label.off}</div>
       </div>
     </label>
   );

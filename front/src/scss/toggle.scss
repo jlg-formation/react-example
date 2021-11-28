@@ -10,7 +10,7 @@
 
   input + .switch {
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     align-items: center;
     height: 1.5em;
     width: 3em;
@@ -32,7 +32,7 @@
   }
 
   input:checked + .switch {
-    justify-content: end;
+    justify-content: flex-end;
     .ergo {
       background-color: var(--active-button-bg-color);
     }

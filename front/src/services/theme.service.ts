@@ -1,6 +1,6 @@
 import { BehaviorSubject } from "rxjs";
 
-type ThemeValue = "light" | "dark";
+export type ThemeValue = "light" | "dark";
 
 class ThemeService {
   theme$ = new BehaviorSubject<ThemeValue>("light");
@@ -11,6 +11,7 @@ class ThemeService {
       });
       document.body.classList.add(theme);
     });
+    this.init();
   }
   toggle() {
     if (this.theme$.value === "light") {
@@ -18,6 +19,22 @@ class ThemeService {
       return;
     }
     this.theme$.next("light");
+  }
+
+  init() {
+    if (
+      window.matchMedia &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches
+    ) {
+      this.theme$.next("dark");
+    }
+
+    window
+      .matchMedia("(prefers-color-scheme: dark)")
+      .addEventListener("change", (e) => {
+        const newColorScheme = e.matches ? "dark" : "light";
+        this.theme$.next(newColorScheme);
+      });
   }
 }
 
