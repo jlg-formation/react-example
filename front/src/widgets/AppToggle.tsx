@@ -7,9 +7,7 @@ function AppToggle({
   initialState: boolean;
   label: { on: JSX.Element; off: JSX.Element };
 }): JSX.Element {
-  console.log("start AppToggle");
-  console.log("initialState: ", initialState);
-  const handleClick = () => {
+  const handleChange = () => {
     action(!initialState);
   };
   return (
@@ -18,7 +16,7 @@ function AppToggle({
         type="checkbox"
         role="switch"
         checked={initialState}
-        onChange={handleClick}
+        onChange={handleChange}
       />
       <div className="switch">
         <div className="ergo">{initialState ? label.on : label.off}</div>

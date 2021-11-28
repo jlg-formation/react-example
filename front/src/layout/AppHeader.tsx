@@ -8,21 +8,17 @@ function AppHeader() {
   const [theme, setTheme] = useState<ThemeValue>(themeService.theme$.value);
 
   useEffect(() => {
-    console.log("start useEffect");
     const subscription = themeService.theme$
       .pipe(distinctUntilChanged())
       .subscribe((theme) => {
-        console.log("received new theme", theme);
         setTheme(theme);
       });
     return function cleanup() {
-      console.log("cleanup");
       subscription.unsubscribe();
     };
   });
 
   function toggleTheme() {
-    console.log("toggle the theme");
     themeService.toggle();
   }
   return (
