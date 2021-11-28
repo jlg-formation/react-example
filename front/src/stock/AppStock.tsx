@@ -8,6 +8,7 @@ function AppStock() {
   const [articles, setArticles] = useState<Article[] | undefined>(undefined);
   const [error, setError] = useState<string>("");
   const [selectedArticles, setSelectedArticles] = useState(new Set<Article>());
+  const [isRemoving, setIsRemoving] = useState(false);
 
   const toggle = (a: Article) => () => {
     selectedArticles.has(a)
@@ -16,16 +17,28 @@ function AppStock() {
     setSelectedArticles(new Set(selectedArticles));
   };
 
-  useEffect(() => {
+  const remove = () => {
     (async () => {
-      try {
-        const articles = await lastValueFrom(articleService.get());
-        setArticles(articles);
-      } catch (err) {
-        console.log("err: ", err);
-        setError("Cannot load the articles");
-      }
+      setIsRemoving(true);
+      const ids = [...selectedArticles].map((a) => a.id);
+      await lastValueFrom(articleService.remove(ids));
+      await refresh();
+      setIsRemoving(false);
     })();
+  };
+
+  const refresh = async () => {
+    try {
+      const articles = await lastValueFrom(articleService.get());
+      setArticles(articles);
+    } catch (err) {
+      console.log("err: ", err);
+      setError("Cannot load the articles");
+    }
+  };
+
+  useEffect(() => {
+    refresh();
   }, []);
 
   return (
@@ -42,8 +55,12 @@ function AppStock() {
             </button>
           </Link>
           {selectedArticles.size > 0 && (
-            <button>
-              <span className="icon-trash"></span>
+            <button onClick={remove}>
+              <span
+                className={
+                  isRemoving ? "icon-spin5 animate-spin" : "icon-trash"
+                }
+              ></span>
             </button>
           )}
         </nav>

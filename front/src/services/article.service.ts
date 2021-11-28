@@ -24,6 +24,20 @@ class ArticleService {
       timeout(5000)
     );
   }
+
+  remove(ids: string[]) {
+    console.log("ids: ", ids);
+    return fromFetch(url, {
+      method: "DELETE",
+      body: JSON.stringify(ids),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }).pipe(
+      switchMap((response) => response.text()),
+      timeout(5000)
+    );
+  }
 }
 
 export const articleService = new ArticleService();
