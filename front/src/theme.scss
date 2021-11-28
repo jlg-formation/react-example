@@ -20,7 +20,8 @@
 
   --border-color: #bbb;
   --cell-even-bg-color: #eee;
-  --cell-hover-bg-collor: #ddd;
+  --cell-hover-bg-color: #ddd;
+  --cell-selected-bg-color: #ccc;
 }
 
 .dark {
@@ -43,5 +44,6 @@
 
   --border-color: #555;
   --cell-even-bg-color: #222;
-  --cell-hover-bg-collor: #333;
+  --cell-hover-bg-color: #333;
+  --cell-selected-bg-color: #444;
 }

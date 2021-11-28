@@ -7,6 +7,14 @@ import { articleService } from "../services/article.service";
 function AppStock() {
   const [articles, setArticles] = useState<Article[] | undefined>(undefined);
   const [error, setError] = useState<string>("");
+  const [selectedArticles, setSelectedArticles] = useState(new Set<Article>());
+
+  const toggle = (a: Article) => () => {
+    selectedArticles.has(a)
+      ? selectedArticles.delete(a)
+      : selectedArticles.add(a);
+    setSelectedArticles(new Set(selectedArticles));
+  };
 
   useEffect(() => {
     (async () => {
@@ -54,7 +62,11 @@ function AppStock() {
             </thead>
             <tbody>
               {articles.map((a) => (
-                <tr key={a.id}>
+                <tr
+                  key={a.id}
+                  onClick={toggle(a)}
+                  className={selectedArticles.has(a) ? "selected" : ""}
+                >
                   <td className="name">{a.name}</td>
                   <td className="price">{a.price} €</td>
                   <td className="qty">{a.qty}</td>

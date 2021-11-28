@@ -23,7 +23,11 @@
       }
 
       tr:hover {
-        background-color: var(--cell-hover-bg-collor);
+        background-color: var(--cell-hover-bg-color);
+      }
+
+      tr.selected {
+        background-color: var(--cell-selected-bg-color);
       }
     }
   }
