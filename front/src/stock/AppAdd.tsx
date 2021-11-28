@@ -3,14 +3,16 @@ import {
   ChangeEventHandler,
   FormEvent,
   FormEventHandler,
+  useContext,
   useState,
 } from "react";
 import { useNavigate } from "react-router-dom";
 import { lastValueFrom, timer } from "rxjs";
+import { ArticleContext } from "../context";
 import { NewArticle } from "../interfaces/Article";
-import { articleService } from "../services/article.service";
 
 function AppAdd() {
+  const articleService = useContext(ArticleContext);
   const [article, setArticle] = useState<NewArticle>({
     name: "Tournevis",
     qty: 10,

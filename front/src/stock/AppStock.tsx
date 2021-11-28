@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import NumberFormat from "react-number-format";
 import { Link } from "react-router-dom";
 import { lastValueFrom } from "rxjs";
+import { ArticleContext } from "../context";
 import { Article } from "../interfaces/Article";
-import { articleService } from "../services/article.service";
 import AppArticleLoadingSkeleton from "../widgets/AppArticleLoadingSkeleton";
-import NumberFormat from "react-number-format";
 
 function AppStock() {
   const [articles, setArticles] = useState<Article[]>([]);
@@ -12,6 +12,7 @@ function AppStock() {
   const [selectedArticles, setSelectedArticles] = useState(new Set<Article>());
   const [isRemoving, setIsRemoving] = useState(false);
   const [isRefreshing, setIsRefreshing] = useState(false);
+  const articleService = useContext(ArticleContext);
 
   const toggle = (a: Article) => () => {
     selectedArticles.has(a)
