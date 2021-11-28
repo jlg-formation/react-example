@@ -41,9 +41,11 @@ function AppStock() {
               <span className="icon-plus"></span>
             </button>
           </Link>
-          <button>
-            <span className="icon-trash"></span>
-          </button>
+          {selectedArticles.size > 0 && (
+            <button>
+              <span className="icon-trash"></span>
+            </button>
+          )}
         </nav>
         {articles === undefined ? (
           error !== "" ? (
