@@ -4,9 +4,10 @@ import { lastValueFrom } from "rxjs";
 import { Article } from "../interfaces/Article";
 import { articleService } from "../services/article.service";
 import AppArticleLoadingSkeleton from "../widgets/AppArticleLoadingSkeleton";
+import NumberFormat from "react-number-format";
 
 function AppStock() {
-  const [articles, setArticles] = useState<Article[] | undefined>(undefined);
+  const [articles, setArticles] = useState<Article[]>([]);
   const [error, setError] = useState<string>("");
   const [selectedArticles, setSelectedArticles] = useState(new Set<Article>());
   const [isRemoving, setIsRemoving] = useState(false);
@@ -73,12 +74,10 @@ function AppStock() {
             </button>
           )}
         </nav>
-        {articles === undefined ? (
-          error !== "" ? (
-            error
-          ) : (
-            <AppArticleLoadingSkeleton />
-          )
+        {isRefreshing ? (
+          <AppArticleLoadingSkeleton />
+        ) : error !== "" ? (
+          error
         ) : (
           <table>
             <thead>
@@ -96,7 +95,16 @@ function AppStock() {
                   className={selectedArticles.has(a) ? "selected" : ""}
                 >
                   <td className="name">{a.name}</td>
-                  <td className="price">{a.price} €</td>
+                  <td className="price">
+                    <NumberFormat
+                      value={a.price}
+                      displayType={"text"}
+                      decimalScale={2}
+                      fixedDecimalScale={true}
+                      thousandSeparator={true}
+                      suffix={" €"}
+                    />
+                  </td>
                   <td className="qty">{a.qty}</td>
                 </tr>
               ))}

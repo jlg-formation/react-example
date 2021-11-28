@@ -1,4 +1,7 @@
 .content {
+  width: 100%;
+  max-width: 25em;
+
   nav {
     display: flex;
     gap: 0.3em;
@@ -6,6 +9,7 @@
   }
 
   table {
+    width: 100%;
     border: 0.1em solid var(--border-color);
     border-collapse: collapse;
     th,
@@ -29,6 +33,11 @@
       tr.selected {
         background-color: var(--cell-selected-bg-color);
       }
+
+      .qty,
+      .price {
+        text-align: right;
+      }
     }
   }
 
@@ -41,7 +50,6 @@
       }
       tr {
         td {
-          width: 10em;
           background-clip: content-box;
           animation: loading 2s ease-in-out 0s infinite;
         }
